@@ -5,7 +5,21 @@
  * with the sum of the two numbers after the specified delay.
  */
 
+function sumAfterDelay(num1, num2, delay) {
+  return new Promise((resolve, reject) => {
+    // create/return new promise instance
+    if (typeof num1 === number && typeof num2 === number) {
+      setTimeout(() => resolve(num1 + num2), delay);
+    } else if (typeof num1 !== number) {
+      // promise func resolves by summing num1 and num2 after the delay
+      reject(`Error: ${num1} is not a number`); // promise func rejects with an error message (if nums aren't numbers?)
+    } else if (typeof num2 !== number) {
+      reject(`Error: ${num2} is not a number`);
+    }
+  }); 
+}
+
 // UNCOMMENT THESE LINES TO CHECK YOUR WORK
-// sumAfterDelay(5, 10, 1000)
-//   .then((sum) => console.log(sum)) // should log 15 after 1 second
-//   .catch((error) => console.error('Error:', error));
+sumAfterDelay(5, 10, 1000)
+  .then((sum) => console.log(sum)) // should log 15 after 1 second
+  .catch((error) => console.error('Error:', error));
